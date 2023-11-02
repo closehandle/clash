@@ -18,7 +18,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Build
-        run: build.sh
+        run: bash build.sh
 
       - name: Build Clash
         uses: docker/build-push-action@v4
