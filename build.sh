@@ -6,7 +6,7 @@ gzip -d         clash-linux-amd64-$CLASH_VERSION.gz
 chown root:root clash-linux-amd64-$CLASH_VERSION
 chmod +x        clash-linux-amd64-$CLASH_VERSION
 cp -f           clash-linux-amd64-$CLASH_VERSION clash/clash
-cp -f           clash-linux-amd64-$CLASH_VERSION clash-macvlan/clashr
+cp -f           clash-linux-amd64-$CLASH_VERSION clash-macvlan/clash
 rm -f           clash-linux-amd64-$CLASH_VERSION
 
 wget -O Country.mmdb https://raw.githubusercontent.com/closehandle/ipip2mmdb/release/Country.mmdb
