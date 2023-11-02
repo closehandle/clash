@@ -16,7 +16,7 @@ docker container run \
     --name clash \
     --pull always \
     --detach \
-    --volume /etc/clash/default.yml:/etc/clash.yml \
+    --volume /etc/clash:/etc/clash \
     --network macvlan \
     --restart always \
     --hostname clash \

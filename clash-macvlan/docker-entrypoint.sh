@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+GEOIP="/var/lib/clash/Country.mmdb"
+
 ip rule add fwmark 1 lookup 1
 ip route add local default dev lo table 1
 
@@ -48,4 +50,25 @@ iptables -t mangle -A PREROUTING ! -d 198.18.0.0/15 -p udp -j RETURN
 iptables -t mangle -A PREROUTING -p tcp -j TPROXY --on-port 2001 --on-ip 0.0.0.0 --tproxy-mark 1
 iptables -t mangle -A PREROUTING -p udp -j TPROXY --on-port 2001 --on-ip 0.0.0.0 --tproxy-mark 1
 
-exec clash -d /var/lib/clash -f /etc/clash.yml
+while read -r i; do
+    name=$(echo $i | sed 's|.yml||g')
+
+    if [[ "$name" != 'default' ]]; then
+        cfgs="/etc/clash/$name.yml"
+        dirs="/var/lib/clash/$name"
+
+        if [[ ! -d "$dirs" ]]; then
+            mkdir "$dirs"
+            cp -f /var/lib/clash/Country.mmdb "$dirs"
+        fi
+
+        clash -d "$dirs" -f "$cfgs"
+    fi
+done < <(ls -1 /etc/clash)
+
+if [[ ! -d /var/lib/clash/default ]]; then
+    mkdir /var/lib/clash/default
+    cp -f /var/lib/clash/Country.mmdb /var/lib/clash/default
+fi
+
+exec clash -d /var/lib/clash/default -f /etc/clash/default.yml
