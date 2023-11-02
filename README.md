@@ -14,6 +14,7 @@ docker container run \
     --ip 192.168.1.254 \
     --env TZ=Asia/Shanghai \
     --name clash \
+    --pull always \
     --detach \
     --volume /etc/clash/default.yml:/etc/clash.yml \
     --network macvlan \
