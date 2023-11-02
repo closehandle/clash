@@ -12,7 +12,7 @@ while read -r i; do
             cp -f  /var/lib/clash/Country.mmdb "$dirs"
         fi
 
-        clash -d "$dirs" -f "$cfgs"
+        clash -d "$dirs" -f "$cfgs" &
     fi
 done < <(ls -1 /etc/clash)
 

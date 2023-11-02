@@ -58,17 +58,17 @@ while read -r i; do
         dirs="/var/lib/clash/$name"
 
         if [[ ! -d "$dirs" ]]; then
-            mkdir "$dirs"
-            cp -f /var/lib/clash/Country.mmdb "$dirs"
+            mkdir  "$dirs"
+            cp -f  /var/lib/clash/Country.mmdb "$dirs"
         fi
 
-        clash -d "$dirs" -f "$cfgs"
+        clash -d "$dirs" -f "$cfgs" &
     fi
 done < <(ls -1 /etc/clash)
 
 if [[ ! -d /var/lib/clash/default ]]; then
-    mkdir /var/lib/clash/default
-    cp -f /var/lib/clash/Country.mmdb /var/lib/clash/default
+    mkdir  /var/lib/clash/default
+    cp -f  /var/lib/clash/Country.mmdb /var/lib/clash/default
 fi
 
 exec clash -d /var/lib/clash/default -f /etc/clash/default.yml
