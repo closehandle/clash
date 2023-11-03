@@ -45,8 +45,7 @@ iptables -t mangle -A PREROUTING -d 255.255.255.255/32 -j RETURN
 iptables -t mangle -A PREROUTING -p udp -m udp --dport 443 -j DROP
 iptables -t mangle -A PREROUTING -p tcp -m tcp --dport 53 -j RETURN
 iptables -t mangle -A PREROUTING -p udp -m udp --dport 53 -j RETURN
-iptables -t mangle -A PREROUTING ! -d 198.18.0.0/15 -p tcp -j RETURN
-iptables -t mangle -A PREROUTING ! -d 198.18.0.0/15 -p udp -j RETURN
+iptables -t mangle -A PREROUTING ! -d 198.18.0.0/15 -p udp -m udp --dport 123 -j RETURN
 iptables -t mangle -A PREROUTING -p tcp -j TPROXY --on-port 2001 --on-ip 0.0.0.0 --tproxy-mark 1
 iptables -t mangle -A PREROUTING -p udp -j TPROXY --on-port 2001 --on-ip 0.0.0.0 --tproxy-mark 1
 
