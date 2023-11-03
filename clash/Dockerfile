@@ -1,5 +1,10 @@
 FROM debian:latest
 
+RUN apt update
+RUN apt dist-upgrade -y
+RUN apt autoremove --purge -y
+RUN apt install ca-certificates -y
+
 ADD clash /usr/bin/clash
 
 RUN mkdir /usr/share/clash
