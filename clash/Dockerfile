@@ -6,7 +6,6 @@ RUN apt update && \
     apt install dnsutils iproute2 iptables net-tools ca-certificates -y
 
 ADD clash /usr/bin/clash
-ADD yacd  /usr/share/yacd
 ADD docker-entrypoint.sh /usr/bin/docker-entrypoint.sh
 
 RUN mkdir /usr/share/clash
