@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-GEOIP="/var/lib/clash/Country.mmdb"
+GEOIP="/usr/share/clash/Country.mmdb"
 
 while read -r i; do
     name=$(echo $i | sed 's|.yml||g')

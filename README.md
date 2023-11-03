@@ -1,4 +1,6 @@
 # clash
+Clash in Docker Container
+
 ```
 docker network create \
     --opt parent=br0 \
@@ -17,6 +19,7 @@ docker container run \
     --pull always \
     --detach \
     --volume /etc/clash:/etc/clash \
+    --volume /var/lib/clash:/var/lib/clash \
     --network macvlan \
     --restart always \
     --hostname clash \

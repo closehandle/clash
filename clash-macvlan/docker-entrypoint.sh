@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-GEOIP="/var/lib/clash/Country.mmdb"
+GEOIP="/usr/share/clash/Country.mmdb"
 
 ip rule add fwmark 1 lookup 1
 ip route add local default dev lo table 1
