@@ -13,6 +13,7 @@ ADD clash /usr/bin/clash
 ADD docker-entrypoint.sh /usr/bin/docker-entrypoint.sh
 
 RUN mkdir /usr/share/clash
+ADD yacd  /usr/share/clash/yacd
 ADD https://raw.githubusercontent.com/closehandle/ipip2mmdb/release/Country.mmdb /usr/share/clash/Country.mmdb
 
 CMD ["bash", "docker-entrypoint.sh"]
